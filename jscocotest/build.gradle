@@ -7,10 +7,12 @@ buildscript {
     }
     dependencies {
         classpath 'com.moowork.gradle:gradle-node-plugin:1.2.0'
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7"
     }
 }
 apply plugin: 'base'
 apply plugin: 'com.moowork.node' // gradle-node-plugin
+apply plugin: "org.sonarqube"
 
 node {
     version = '10.14.1'
@@ -28,3 +30,9 @@ task test(type: NpmTask) {
 }
 
 check.dependsOn test
+
+sonarqube{
+    properties {
+        property "sonar.language", "js"
+    }
+}
