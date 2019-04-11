@@ -1,0 +1,4 @@
+build
+.gradle
+.nyc_output
+coverage/lcov-report/*
