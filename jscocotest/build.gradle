@@ -7,6 +7,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.moowork.gradle:gradle-node-plugin:1.2.0'
+        classpath group: "com.liferay", name: "com.liferay.gradle.plugins.node", version: "4.6.7"
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7"
     }
 }
@@ -24,7 +25,7 @@ task test(type: NpmTask) {
     dependsOn assemble
     environment CI: 'true'
     args = ['run', 'test']
-    inputs.files fileTree('src')
+    inputs.files fileTree('src/**/*')
     inputs.file 'package.json'
     inputs.file 'package-lock.json'
 }
@@ -34,10 +35,10 @@ check.dependsOn test
 sonarqube{
     properties {
         property "sonar.projectKey", "sonar_project"
-        property "sonar.projectName", "jscocotest"
+        // property "sonar.projectName", "jscocotest"
         property "sonar.javascript.lcov.reportPaths", "../jscocotest/coverage/lcov.info"
         property "sonar.sources", "../jscocotest"
-        property "sonar.sourceEncoding", "UTF-8"
+        // property "sonar.sourceEncoding", "UTF-8"
         property "sonar.exclusions", ".gradle/**/*, node_modules/**/*, coverage/lcov-report/**/*"
     }
 }
