@@ -35,10 +35,10 @@ check.dependsOn test
 sonarqube{
     properties {
         property "sonar.projectKey", "sonar_project"
-        // property "sonar.projectName", "jscocotest"
+        property "sonar.projectName", "jscocotest"
         property "sonar.javascript.lcov.reportPaths", "../jscocotest/coverage/lcov.info"
         property "sonar.sources", "../jscocotest"
-        // property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.sourceEncoding", "UTF-8"
         property "sonar.exclusions", ".gradle/**/*, node_modules/**/*, coverage/lcov-report/**/*"
     }
 }
